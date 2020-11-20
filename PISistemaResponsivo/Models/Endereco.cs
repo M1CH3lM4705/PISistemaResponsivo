@@ -10,6 +10,7 @@ namespace PISistemaResponsivo.Models
     [Table("Enderecos")]
     public class Endereco
     {
+        [Key]
         public long EnderecoId { get; set; }
         public string Rua { get; set; }
         public int Numero { get; set; }

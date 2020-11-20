@@ -10,6 +10,10 @@ namespace PISistemaResponsivo.Models
     [Table("Paróquias")]
     public class Paroquia
     {
+        public Paroquia()
+        {
+            Endereco = new Endereco();
+        }
         [Key]
         public long ParoquiaId { get; set; }
 

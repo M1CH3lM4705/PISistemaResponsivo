@@ -9,7 +9,11 @@ namespace PISistemaResponsivo.Models
 {
     [Table("Voluntarios")]
     public class Voluntario
-    {   
+    {
+        public Voluntario()
+        {
+            Endereco = new Endereco();
+        }
         [Key]
         public long VoluntarioId { get; set; }
 

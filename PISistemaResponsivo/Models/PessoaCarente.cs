@@ -10,6 +10,10 @@ namespace PISistemaResponsivo.Models
     [Table("Pessoas Carentes")]
     public class PessoaCarente
     {
+        public PessoaCarente()
+        {
+            Endereco = new Endereco();
+        }
         [Key]
         public long CarenteId { get; set; }
 
