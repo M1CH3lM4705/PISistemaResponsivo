@@ -127,11 +127,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PessoaCarenteController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infraestrutura\Context\DataContext.cs" />
     <Compile Include="Infraestrutura\Dao\DaoBase.cs" />
+    <Compile Include="Infraestrutura\Dao\DoacaoDao.cs" />
+    <Compile Include="Infraestrutura\Dao\EnderecoDao.cs" />
+    <Compile Include="Infraestrutura\Dao\ParoquiaDao.cs" />
+    <Compile Include="Infraestrutura\Dao\PessoaCarenteDao.cs" />
+    <Compile Include="Infraestrutura\Dao\VoluntarioDao.cs" />
     <Compile Include="Models\Doacao.cs" />
     <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Paroquia.cs" />
@@ -281,6 +287,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PessoaCarente\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
