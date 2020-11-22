@@ -18,6 +18,5 @@ namespace PISistemaResponsivo.Infraestrutura.Context
         public virtual DbSet<Voluntario> Voluntarios { get; set; }
         public virtual DbSet<Paroquia> Paroquias { get; set; }
         public virtual DbSet<Doacao> Doacoes { get; set; }
-        public DbSet<Endereco> Enderecos { get; set; }
     }
 }

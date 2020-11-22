@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PISistemaResponsivo.Infraestrutura.Dao;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -35,6 +36,20 @@ namespace PISistemaResponsivo.Models
         [Required(ErrorMessage = "O campo motivo da doação é obrigatório.")]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Motivo da Doação")]
+        [Column(TypeName = "VARCHAR")]
         public string MotivoDoacao { get; set; }
+
+        public int CalcularDias(int id)
+        {
+            DateTime dtAtual = DateTime.Now;
+            DoacaoDao objDoacao = new DoacaoDao();
+            var dtEntrega = objDoacao.Buscar(id);
+            
+            TimeSpan dataEmDias = dtAtual - dtEntrega.DataEntrega;
+
+            int totalDias = dataEmDias.Days;
+
+            return totalDias;
+        }
     }
 }

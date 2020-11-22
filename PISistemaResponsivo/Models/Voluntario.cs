@@ -12,7 +12,7 @@ namespace PISistemaResponsivo.Models
     {
         public Voluntario()
         {
-            Endereco = new Endereco();
+            
         }
         [Key]
         public long VoluntarioId { get; set; }
@@ -21,6 +21,9 @@ namespace PISistemaResponsivo.Models
         [RegularExpression(@"^[a-zA-Z''-'\s]{1,100}$", ErrorMessage = "Números e caracteres especiais não são permitidos no nome.")]
         [Column("Nome", TypeName = "VARCHAR")]
         public string NomeVoluntario { get; set; }
-        public Endereco Endereco { get; set; }
+
+        [MaxLength(100)]
+        [Display(Name = "Endereço")]
+        public string Endereco { get; set; }
     }
 }

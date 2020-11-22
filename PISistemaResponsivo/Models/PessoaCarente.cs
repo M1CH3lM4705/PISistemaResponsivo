@@ -12,7 +12,7 @@ namespace PISistemaResponsivo.Models
     {
         public PessoaCarente()
         {
-            Endereco = new Endereco();
+            
         }
         [Key]
         public long CarenteId { get; set; }
@@ -52,7 +52,9 @@ namespace PISistemaResponsivo.Models
         [MaxLength(20)]
         [RegularExpression(@"^[a-zA-Z '' - '\ s] * $", ErrorMessage = "Digite somente letras")]
         public string Religiao { get; set; }
-        public Endereco Endereco { get; set; }
+        [MaxLength(100)]
+        [Display(Name ="Endereço")]
+        public string Endereco { get; set; }
 
         [Display(Name = "Renda Familiar")]
         [DisplayFormat(DataFormatString = "{0,c}", ApplyFormatInEditMode = true)]
