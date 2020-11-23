@@ -63,8 +63,10 @@
                     @Html.DisplayFor(modelItem => item.MotivoDoacao)
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar", "ALterar", new { id = item.DoacaoId }) |
-                    @Html.ActionLink("Excluir", "Excluir", new { id = item.DoacaoId })
+                    <div class="btn-group">
+                        @Html.ActionLink("Alterar", "ALterar", "Doacao", new { id = item.DoacaoId },  new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Excluir", "Excluir", "Doacao", new { id = item.DoacaoId }, new { @class = "btn btn-danger" })
+                    </div>
                 </td>
             </tr>
         }

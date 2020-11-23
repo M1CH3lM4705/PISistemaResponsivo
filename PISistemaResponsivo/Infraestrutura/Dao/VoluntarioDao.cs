@@ -20,6 +20,11 @@ namespace PISistemaResponsivo.Infraestrutura.Dao
             return _contexto.Voluntarios.FirstOrDefault(x => x.VoluntarioId == voluntarioId);
         }
 
+        public Voluntario Find(int? id)
+        {
+            return _contexto.Voluntarios.Find(id);
+        }
+
         public void Alterar(Voluntario voluntario)
         {
             _contexto.Entry(voluntario).State = EntityState.Modified;

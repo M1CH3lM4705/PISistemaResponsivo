@@ -20,6 +20,11 @@ namespace PISistemaResponsivo.Infraestrutura.Dao
             return _contexto.Doacoes.FirstOrDefault(x => x.DoacaoId == doacaoId);
         }
 
+        public Doacao Find(int? id)
+        {
+            return _contexto.Doacoes.Find(id);
+        }
+
         public void Alterar(Doacao doacao)
         {
             _contexto.Entry(doacao).State = EntityState.Modified;

@@ -1,53 +1,42 @@
 ﻿@model PISistemaResponsivo.Models.Doacao
 
 @{
-    ViewBag.Title = "Doaçoes";
+    ViewBag.Title = "Alterar";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Nova Doação</h2>
+<h2>Alterar</h2>
 
-@using (Html.BeginForm("Novo", "Doacao", FormMethod.Post))
+@using (Html.BeginForm("Alterar", "Doacao", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
-
+    
     <div class="form-horizontal">
-        
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.DoacaoId)
+
         <div class="form-group">
             @Html.LabelFor(model => model.PessoaCarenteId, "PessoaCarenteId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="PessoaCarenteId" id="PessoaCarenteId" class="form-control">
-                    @foreach (var item in ViewBag.PCarente)
-                    {
-                        <option value="@item.PessoCarenteId">@item.Nome</option>
-                    }
-                </select>
+                @Html.DropDownList("PessoaCarenteId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.PessoaCarenteId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.VoluntarioId, "VoluntarioId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="VoluntarioId" id="VoluntarioId" class="form-control">
-                    @foreach (var item in ViewBag.Voluntario)
-                    {
-                        <option value="@item.VoluntarioId">@item.NomeVoluntario</option>
-                    }
-                </select>
+                @Html.DropDownList("VoluntarioId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.VoluntarioId, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.ParoquiaId, "ParoquiaId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select name="ParoquiaId" id="ParoquiaId" class="form-control">
-                    @foreach (var item in ViewBag.Paroquia)
-                    {
-                        <option value="@item.ParoquiaId">@item.NomeParoquia</option>
-                    }
-                </select>
+                @Html.DropDownList("ParoquiaId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ParoquiaId, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -77,16 +66,12 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cadastrar" class="btn btn-default" />
+                <input type="submit" value="Salvar" class="btn btn-default" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Voltar", "Index", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
-
-@section Scripts{
-    @Scripts.Render("~/bundles/jqueryval");
-}

@@ -39,8 +39,10 @@
                     @Html.DisplayFor(modelItem => item.Endereco)
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar", "Alterar", new { id = item.ParoquiaId }) |
-                    @Html.ActionLink("Excluir", "Excluir", new { id = item.ParoquiaId })
+                    <div class="btn-group">
+                        @Html.ActionLink("Alterar", "Alterar", "Paroquia", new { id = item.ParoquiaId }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Excluir", "Excluir", "Paroquia", new { id = item.ParoquiaId }, new { @class = "btn btn-danger" })
+                    </div>
                 </td>
             </tr>
         }

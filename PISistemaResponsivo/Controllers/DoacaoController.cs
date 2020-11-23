@@ -3,6 +3,7 @@ using PISistemaResponsivo.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -59,40 +60,71 @@ namespace PISistemaResponsivo.Controllers
         }
 
         // GET: Doacao/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Alterar(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            var doacao = new DoacaoDao().Find(id);
+
+            if (doacao == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.Menu = 1;
+            return View(doacao);
         }
 
-        // POST: Doacao/Edit/5
+        // POST: PessoaCarente/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Altear(Doacao doacao)
         {
             try
             {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    new DoacaoDao().Alterar(doacao);
+                    ViewBag.Menu = 1;
+                    ViewBag.Msg = "Produto Altearado com sucesso!";
+                    return RedirectToAction("Index");
+                }
+                ViewBag.Menu = 1;
+                return View(doacao);
             }
             catch
             {
-                return View();
+                ViewBag.Menu = 1;
+                return View(doacao);
             }
         }
 
-        // GET: Doacao/Delete/5
-        public ActionResult Delete(int id)
+        // GET: PessoaCarente/Delete/5
+        public ActionResult Excluir(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var doacao = new DoacaoDao().Find(id);
+
+            if (doacao == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Menu = 1;
+            return View(doacao);
         }
 
-        // POST: Doacao/Delete/5
+        // POST: PessoaCarente/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Exlcuir(int id)
         {
             try
             {
-                // TODO: Add delete logic here
+                new DoacaoDao().Excluir(id);
 
                 return RedirectToAction("Index");
             }

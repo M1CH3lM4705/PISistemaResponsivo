@@ -50,7 +50,6 @@ namespace PISistemaResponsivo.Models
 
         [Required(ErrorMessage ="O campo Religião é obrigatório.")]
         [MaxLength(20)]
-        [RegularExpression(@"^[a-zA-Z '' - '\ s] * $", ErrorMessage = "Digite somente letras")]
         public string Religiao { get; set; }
         [MaxLength(100)]
         [Display(Name ="Endereço")]

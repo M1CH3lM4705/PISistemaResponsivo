@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PISistemaResponsivo.Models.PessoaCarente>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Área das pessoas carentes";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -82,8 +82,10 @@
                     @Html.DisplayFor(modelItem => item.RendaFamiliar)
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar", "Alterar", new { id = item.CarenteId }) |
-                    @Html.ActionLink("Excluir", "Excluir", new { id = item.CarenteId })
+                    <div class="btn-group">
+                        @Html.ActionLink("Alterar", "Alterar", "PessoaCarente", new { id = item.CarenteId }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Excluir", "Excluir", "PessoaCarente", new { id = item.CarenteId }, new { @class = "btn btn-danger" })
+                    </div>
                 </td>
             </tr>
         }

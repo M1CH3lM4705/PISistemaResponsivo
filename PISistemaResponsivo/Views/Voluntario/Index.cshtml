@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<PISistemaResponsivo.Models.Voluntario>
 
 @{
-    ViewBag.Title = "Voluntario";
+    ViewBag.Title = "Área dos Voluntarios";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -39,8 +39,10 @@
                     @Html.DisplayFor(modelItem => item.Endereco)
                 </td>
                 <td>
-                    @Html.ActionLink("Alterar", "Alterar", new { id = item.VoluntarioId }) |
-                    @Html.ActionLink("Excluir", "Excluir", new { id = item.VoluntarioId })
+                    <div class="btn-group">
+                        @Html.ActionLink("Alterar", "Alterar", "Voluntario", new { id = item.VoluntarioId }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Excluir", "Excluir", "Voluntario", new { id = item.VoluntarioId }, new { @class = "btn btn-danger" })
+                    </div>
                 </td>
             </tr>
         }

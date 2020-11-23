@@ -18,6 +18,11 @@ namespace PISistemaResponsivo.Infraestrutura.Dao
             return _contexto.PessoasCarentes.FirstOrDefault(x => x.CarenteId == pCarenteId);
         }
 
+        public PessoaCarente Find(int? id)
+        {
+            return _contexto.PessoasCarentes.Find(id);
+        }
+
         public void Alterar(PessoaCarente pessoaCarente)
         {
             _contexto.Entry(pessoaCarente).State = EntityState.Modified;

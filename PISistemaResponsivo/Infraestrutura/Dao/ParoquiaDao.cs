@@ -20,6 +20,11 @@ namespace PISistemaResponsivo.Infraestrutura.Dao
             return _contexto.Paroquias.FirstOrDefault(x => x.ParoquiaId == paroquiaId);
         }
 
+        public Paroquia Find(int? id)
+        {
+            return _contexto.Paroquias.Find(id);
+        }
+
         public void Alterar(Paroquia paroquia)
         {
             _contexto.Entry(paroquia).State = EntityState.Modified;
