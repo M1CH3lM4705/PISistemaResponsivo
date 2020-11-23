@@ -1,41 +1,67 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Meu Aplicativo ASP.NET</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Nome do aplicativo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Início", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Sobre", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contato", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+        <h5 class="my-0 mr-md-auto font-weight-normal">Caritas</h5>
+        @if (ViewBag.Menu == null)
+        {
+
+        }
+        else
+        {
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Inicio</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index", "Home")">Sair</a>
+                </li>
+            </ul>
+        }
     </div>
     <div class="container body-content">
-        <div class="alert alert-success fade show" role="alert">
-            A simple success alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
-        </div>
+        @if (ViewBag.Msg == null)
+        {
+
+        }
+        else
+        {
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                @ViewBag.Msg
+                <a class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </a>
+            </div>
+        }
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+            <div class="row">
+                <div class="col-12 col-md">
+                    <small class="d-block mb-3 text-muted">&copy; @DateTime.Now.Year - Projeto Integrador</small>
+                </div>
+                <div class="col-6 col-md">
+                    <h5>Alunos</h5>
+                    <ul class="list-unstyled text-small">
+                        <li><a class="text-muted" href="#">Gezinéia Paula Costa</a></li>
+                        <li><a class="text-muted" href="#">Jorhana Guastovara Mercado Freitas</a></li>
+                        <li><a class="text-muted" href="#">Matheus da Silva Maia</a></li>
+                        <li><a class="text-muted" href="#">Michel Matos de Oliveira</a></li>
+                    </ul>
+                </div>
+            </div>
         </footer>
     </div>
 

@@ -17,8 +17,17 @@ namespace PISistemaResponsivo.Models
         }
         [Key]
         public long DoacaoId { get; set; }
+        public long PessoaCarenteId { get; set; }
+        public long VoluntarioId { get; set; }
+        public long ParoquiaId { get; set; }
+
+        [ForeignKey("PessoaCarenteId")]
         public PessoaCarente PessoaCarente { get; set; }
+
+        [ForeignKey("VoluntarioId")]
         public Voluntario Voluntario { get; set; }
+
+        [ForeignKey("ParoquiaId")]
         public Paroquia Paroquia { get; set; }
 
         

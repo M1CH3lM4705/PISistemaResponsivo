@@ -8,6 +8,17 @@ namespace PISistemaResponsivo
         // Para obter mais informações sobre o agrupamento, visite https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+
+            BundleTable.EnableOptimizations = true;
+
+            var ordem = new BundleFileSetOrdering("meuScript");
+            ordem.Files.Add("setup.js");
+            ordem.Files.Add("display.js");
+            bundles.FileSetOrderList.Insert(0, ordem);
+
+            bundles.Add(new ScriptBundle("~/comum").IncludeDirectory(
+                "~/Scripts/comum", "*.js", true));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
@@ -24,7 +35,8 @@ namespace PISistemaResponsivo
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/fontawesome-all.min.css"));
         }
     }
 }

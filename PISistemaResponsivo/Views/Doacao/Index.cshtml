@@ -1,0 +1,73 @@
+﻿@model IEnumerable<PISistemaResponsivo.Models.Doacao>
+
+@{
+    ViewBag.Title = "Área de doações";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Doações</h2>
+
+<p>
+    @Html.ActionLink("Novo", "Novo", "Doacao", new { @class = "btn btn-primary btn-lg" })
+</p>
+<table class="table table-striped table-hover">
+    @if (Model == null)
+    {
+        <tr>
+            <td colspan="4">Não há dados.</td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Paroquia.NomeParoquia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PessoaCarente.Nome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Voluntario.NomeVoluntario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DataEntrega)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoDoacao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MotivoDoacao)
+            </th>
+            <th>Operações</th>
+        </tr>
+
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Paroquia.NomeParoquia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PessoaCarente.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Voluntario.NomeVoluntario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DataEntrega)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoDoacao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MotivoDoacao)
+                </td>
+                <td>
+                    @Html.ActionLink("Alterar", "ALterar", new { id = item.DoacaoId }) |
+                    @Html.ActionLink("Excluir", "Excluir", new { id = item.DoacaoId })
+                </td>
+            </tr>
+        }
+    }
+
+</table>

@@ -27,7 +27,7 @@ namespace PISistemaResponsivo.Models
         public string Genero { get; set; }
 
         [Required(ErrorMessage = "O campo CPF é obrigatorio")]
-        [RegularExpression(@"^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$", ErrorMessage = "Somente números no campo CPF")]
+        [RegularExpression(@"^\d{3}\.?\d{3}\.?\d{3}\-?\d{2}$", ErrorMessage = "Cpf Incompleto")]
         [StringLength(14, MinimumLength = 11, ErrorMessage = "O digite o cpf Completo.")]
         [Column("CPF", TypeName = "VARCHAR")]
         [Display(Name = "CPF")]
