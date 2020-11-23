@@ -125,11 +125,12 @@ namespace PISistemaResponsivo.Controllers
             try
             {
                 new DoacaoDao().Excluir(id);
-
+                ViewBag.Menu = 1;
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Menu = 1;
                 return View();
             }
         }

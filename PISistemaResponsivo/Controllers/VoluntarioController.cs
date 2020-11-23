@@ -121,11 +121,12 @@ namespace PISistemaResponsivo.Controllers
             try
             {
                 new VoluntarioDao().Excluir(id);
-
+                ViewBag.Menu = 1;
                 return RedirectToAction("Index");
             }
             catch
             {
+                ViewBag.Menu = 1;
                 return View();
             }
         }

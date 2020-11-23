@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-        <h5 class="my-0 mr-md-auto font-weight-normal">Caritas</h5>
+        <h5 class="my-0 mr-md-auto font-weight-normal" ><a class="navbar-brand " style="color:#0e0d0d" href="@Url.Action("Index","Index")">Caritas</a></h5>
         @if (ViewBag.Menu == null)
         {
 
@@ -19,10 +19,16 @@
         {
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Inicio</a>
+                    <a class="nav-link active" href="@Url.Action("Index","Index")">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="@Url.Action("Index","PessoaCarente")">Carentes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Voluntario")">Voluntarios</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Paroquia")">Paroquias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Index", "Home")">Sair</a>
@@ -65,8 +71,13 @@
         </footer>
     </div>
 
+    
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script>
+        
+    </script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

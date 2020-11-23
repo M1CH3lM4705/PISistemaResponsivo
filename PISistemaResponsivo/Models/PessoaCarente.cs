@@ -56,7 +56,7 @@ namespace PISistemaResponsivo.Models
         public string Endereco { get; set; }
 
         [Display(Name = "Renda Familiar")]
-        [DisplayFormat(DataFormatString = "{0,c}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:C0}", ApplyFormatInEditMode = true)]
         public decimal RendaFamiliar { get; set; }
 
     }

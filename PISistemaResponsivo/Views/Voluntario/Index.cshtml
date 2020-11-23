@@ -10,42 +10,44 @@
 <p>
     @Html.ActionLink("Novo", "Novo", "Voluntario", new { @class = "btn btn-primary btn-lg" })
 </p>
-<table class="table table-striped table-hover">
-    @if (Model == null)
-    {
-        <tr>
-            <td colspan="4">Não há dados.</td>
-        </tr>
-    }
-    else
-    {
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NomeVoluntario)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Endereco)
-            </th>
-            <th>Operações</th>
-        </tr>
-
-        foreach (var item in Model)
+<div class="table-responsive-md">
+    <table class="table table-striped table-hover">
+        @if (Model == null)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NomeVoluntario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Endereco)
-                </td>
-                <td>
-                    <div class="btn-group">
-                        @Html.ActionLink("Alterar", "Alterar", "Voluntario", new { id = item.VoluntarioId }, new { @class = "btn btn-primary" }) |
-                        @Html.ActionLink("Excluir", "Excluir", "Voluntario", new { id = item.VoluntarioId }, new { @class = "btn btn-danger" })
-                    </div>
-                </td>
+                <td colspan="4">Não há dados.</td>
             </tr>
         }
-    }
+        else
+        {
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.NomeVoluntario)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Endereco)
+                </th>
+                <th>Operações</th>
+            </tr>
 
-</table>
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NomeVoluntario)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Endereco)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            @Html.ActionLink("Alterar", "Alterar", "Voluntario", new { id = item.VoluntarioId }, new { @class = "btn btn-primary" }) |
+                            <a href="@Url.Action("Excluir","Voluntario",new { id = item.VoluntarioId})" class="btn btn-danger" onclick="javascrip:return confirm('Confirma a Exclusão?');">Excluir</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

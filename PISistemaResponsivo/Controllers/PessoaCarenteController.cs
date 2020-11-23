@@ -12,12 +12,13 @@ namespace PISistemaResponsivo.Controllers
 {
     public class PessoaCarenteController : Controller
     {
-        private DataContext _db = new DataContext();
+        private PessoaCarenteDao _pc = new PessoaCarenteDao();
         // GET: PessoaCarente
         public ActionResult Index()
         {
+            var pCarente = _pc.Listar();
             ViewBag.Menu = 1;
-            return View();
+            return View(pCarente);
         }
 
         // GET: PessoaCarente/Details/5
@@ -123,6 +124,7 @@ namespace PISistemaResponsivo.Controllers
         {
             try
             {
+                
                 new PessoaCarenteDao().Excluir(id);
 
                 return RedirectToAction("Index");
