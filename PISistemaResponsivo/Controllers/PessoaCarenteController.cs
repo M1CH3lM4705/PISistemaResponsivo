@@ -62,7 +62,10 @@ namespace PISistemaResponsivo.Controllers
         // GET: PessoaCarente/Edit/5
         public ActionResult Alterar(int? id)
         {
-            if(id == null)
+            string[] listGenero = { "Masculino", "Feminino", "Outro" };
+           
+            ViewBag.Genero = listGenero;
+            if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
@@ -102,20 +105,23 @@ namespace PISistemaResponsivo.Controllers
         }
 
         // GET: PessoaCarente/Delete/5
-        public ActionResult Excluir(int? id)
+        public ActionResult Excluir(int id)
         {
             if(id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var pCarente = new PessoaCarenteDao().Find(id);
+            var pCarente = new PessoaCarenteDao().Buscar(id);
             
             if(pCarente == null)
             {
                 return HttpNotFound();
             }
+            
+
+            new PessoaCarenteDao().Excluir(id);
             ViewBag.Menu = 1;
-            return View(pCarente);
+            return RedirectToAction("Index");
         }
 
         // POST: PessoaCarente/Delete/5

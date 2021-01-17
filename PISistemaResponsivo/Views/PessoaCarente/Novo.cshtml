@@ -97,15 +97,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Cadstrar" class="btn btn-default" />
+                <input type="submit" value="Cadastrar" class="btn btn-success" />
+                @Html.ActionLink("Voltar", "Index", "", new { @class = "btn btn-secondary-light" })
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Voltar ", "Index", "Index")
-</div>
+
 
 @section Scripts{
     @Scripts.Render("~/bundles/jqueryval");

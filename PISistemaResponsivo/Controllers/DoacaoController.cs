@@ -14,16 +14,12 @@ namespace PISistemaResponsivo.Controllers
         // GET: Doacao
         public ActionResult Index()
         {
+            var doa = new DoacaoDao().Listar();
             ViewBag.Menu = 1;
-            return View();
+            return View(doa);
         }
 
         // GET: Doacao/Details/5
-        public ActionResult Details(int id)
-        {
-            ViewBag.Menu = 1;
-            return View();
-        }
 
         // GET: Doacao/Create
         public ActionResult Novo()
@@ -102,20 +98,21 @@ namespace PISistemaResponsivo.Controllers
         }
 
         // GET: PessoaCarente/Delete/5
-        public ActionResult Excluir(int? id)
+        public ActionResult Excluir(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var doacao = new DoacaoDao().Find(id);
+            var doacao = new DoacaoDao().Buscar(id);
 
             if (doacao == null)
             {
                 return HttpNotFound();
             }
+            new DoacaoDao().Excluir(id);
             ViewBag.Menu = 1;
-            return View(doacao);
+            return RedirectToAction("Index");
         }
 
         // POST: PessoaCarente/Delete/5

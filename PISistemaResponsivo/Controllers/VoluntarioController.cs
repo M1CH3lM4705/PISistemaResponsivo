@@ -15,7 +15,8 @@ namespace PISistemaResponsivo.Controllers
         public ActionResult Index()
         {
             ViewBag.Menu = 1;
-            return View();
+            var vl = new VoluntarioDao().Listar();
+            return View(vl);
         }
 
         // GET: Voluntario/Details/5
@@ -98,24 +99,25 @@ namespace PISistemaResponsivo.Controllers
         }
 
         // GET: PessoaCarente/Delete/5
-        public ActionResult Excluir(int? id)
+        public ActionResult Excluir(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var voluntario = new VoluntarioDao().Find(id);
+            var voluntario = new VoluntarioDao().Buscar(id);
 
             if (voluntario == null)
             {
                 return HttpNotFound();
             }
+            new VoluntarioDao().Excluir(id);
             ViewBag.Menu = 1;
-            return View(voluntario);
+            return RedirectToAction("Index");
         }
 
-        // POST: PessoaCarente/Delete/5
-        [HttpPost]
+            // POST: PessoaCarente/Delete/5
+            [HttpPost]
         public ActionResult Exlcuir(int id)
         {
             try

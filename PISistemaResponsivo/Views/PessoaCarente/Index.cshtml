@@ -84,7 +84,7 @@
                     <td>
                         <div class="btn-group">
                             @Html.ActionLink("Alterar", "Alterar", "PessoaCarente", new { id = item.CarenteId }, new { @class = "btn btn-primary" })
-                            <a href="@Url.Action("Excluir","PessoaCarente",new { id = item.CarenteId})" class="btn btn-danger" onclick="javascrip:return confirm('Confirma a Exclusão?');">Excluir</a>
+                            <a href="@Url.Action("Excluir","PessoaCarente", new { id = item.CarenteId})" class="btn btn-danger" onclick="javascrip:return confirm('Confirma a Exclusão?');">Excluir</a>
                         </div>
                     </td>
                 </tr>

@@ -14,8 +14,9 @@ namespace PISistemaResponsivo.Controllers
         // GET: Paroquia
         public ActionResult Index()
         {
+            var par = new ParoquiaDao().Listar();
             ViewBag.Menu = 1;
-            return View();
+            return View(par);
         }
 
         // GET: Paroquia/Details/5
@@ -97,20 +98,22 @@ namespace PISistemaResponsivo.Controllers
         }
 
         // GET: PessoaCarente/Delete/5
-        public ActionResult Excluir(int? id)
+        public ActionResult Excluir(int id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var paroquia = new ParoquiaDao().Find(id);
+            var paroquia = new ParoquiaDao().Buscar(id);
 
             if (paroquia == null)
             {
                 return HttpNotFound();
             }
             ViewBag.Menu = 1;
-            return View(paroquia);
+            new ParoquiaDao().Excluir(id);
+
+            return RedirectToAction("Index");
         }
 
         // POST: PessoaCarente/Delete/5
